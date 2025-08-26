@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inmigrantes en España | Alejandra Venegas</title>
+  <link rel="stylesheet" href="cls/estilos.css"> <!-- Ajusta la ruta según tu carpeta CSS -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffffff; /* fondo blanco */
+      color: #333333; /* texto oscuro */
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #f2f2f2; /* gris claro */
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+    header a {
+      display: inline-block;
+      margin-top: 10px;
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+    }
+    main {
+      padding: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    video {
+      display: block;
+      margin: 20px auto;
+      max-width: 100%;
+      height: auto;
+      border: 2px solid #cccccc;
+      border-radius: 8px;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #f2f2f2;
+      margin-top: 40px;
+    }
+    footer a {
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Inmigrantes en España</h1>
+    <a href="index.html">← Volver al portafolio</a>
+  </header>
+
+  <main>
+    <section>
+      <p>
+        La inmigración es un fenómeno global que ha marcado la estructura social, económica y cultural de los países receptores. 
+        España, por su ubicación geográfica estratégica y su papel como puerta de entrada a Europa, ha experimentado en las últimas décadas un notable aumento en la llegada de personas provenientes de diversas regiones del mundo. 
+        Este fenómeno ha tenido un impacto significativo en distintos ámbitos: desde la economía y el mercado laboral hasta la diversidad cultural y los retos de integración social.
+      </p>
+
+      <h2>Animación de migraciones a España</h2>
+      <p>
+        Este video muestra un globo terráqueo en 3D con España como destino, y los países de origen de los migrantes marcados en rojo. 
+        Cada punto se mueve desde el país de origen hasta España según los datos de los últimos años. 
+        Debajo del globo, un gráfico de barras dinámico muestra el total acumulado de migrantes por nacionalidad, sincronizado con la animación. 
+        Se incluye un zoom inicial global que centra la vista en España, y etiquetas con el año, país y número de migrantes.
+      </p>
+
+      <video width="600" controls>
+        <source src="videos/video_globo.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción del video.
+      </video>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Alejandra Venegas | <a href="mailto:alejandra@email.com">Contacto</a></p>
+  </footer>
+</body>
+</html>
+
