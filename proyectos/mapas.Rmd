@@ -1,0 +1,256 @@
+---
+title: "Elecciones"
+author: "Alejandra Venegas"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+
+# 1. Distribución de Votantes y Resultados de la Primera Vuelta Presidencial 2021
+
+
+Según los datos oficiales del Servel, en las elecciones presidenciales de 2021 participaron 7.114.318 votantes efectivos. Gabriel Boric y José Antonio Kast pasaron a la segunda vuelta con 1.815.024 y 1.961.779 votos, respectivamente, lo que representa aproximadamente 25% y 27% de los votos emitidos respectivamente. Esto muestra que poco más de una cuarta parte de los votantes apoyó a cada candidato que avanzó a la segunda vuelta.
+
+
+```{r,echo=FALSE,message=FALSE}
+library(knitr)
+library(kableExtra)
+library(dplyr)
+library(scales)  # para formatear números
+
+# Crear la tabla
+tabla_votos <- data.frame(
+  Nro = c(1,2,3,4,5,6,7,900,901,""),
+  Voto = c("GABRIEL BORIC FONT",
+           "JOSE ANTONIO KAST RIST",
+           "YASNA PROVOSTE CAMPILLAY",
+           "SEBASTIAN SICHEL RAMIREZ",
+           "EDUARDO ARTES BRICHETTI",
+           "MARCO ENRIQUEZ-OMINAMI GUMUCIO",
+           "FRANCO PARISI FERNANDEZ",
+           "VOTOS NULOS",
+           "VOTOS EN BLANCO",
+           "TOTAL"),
+  Chile = c(1796851, 1954607, 813407, 894838, 102209, 533554, 899067, 55316, 30427, 7080276),
+  Extranjero = c(18173, 7172, 2156, 3797, 688, 829, 997, 164, 66, 34042),
+  Total = c(1815024, 1961779, 815563, 898635, 102897, 534383, 900064, 55480, 30493, 7114318)
+)
+
+# Formatear números con miles (.) y decimales (,)
+tabla_votos <- tabla_votos %>%
+  mutate(
+    Chile = number(Chile, big.mark = ".", decimal.mark = ","),
+    Extranjero = number(Extranjero, big.mark = ".", decimal.mark = ","),
+    Total = number(Total, big.mark = ".", decimal.mark = ",")
+  )
+
+# Mostrar la tabla bonita
+tabla_votos %>%
+  kable(caption = "Votación Presidencial 2021 por Candidato", align = c('c','l','r','r','r'), format = "html") %>%
+  kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover", "condensed")) %>%
+  row_spec(nrow(tabla_votos), bold = TRUE, color = "white", background = "darkblue")
+
+
+```
+
+## Votos por región año 2021
+
+Observamos en el voto nacional que el 41% de los votos provienen de la Región Metropolitana. Le siguen Valparaíso (11,3%), Biobío (8,8%) y Maule (5,8%).
+
+```{r,echo=FALSE,message=FALSE}
+
+# Cargar librerías
+library(knitr)
+library(kableExtra)
+library(scales)  # para formatear números
+
+# Crear vectores con los nombres de las regiones y sus votos
+regiones <- c(
+  "METROPOLITANA DE SANTIAGO",
+  "DE VALPARAISO",
+  "DEL BIOBIO",
+  "DEL MAULE",
+  "DE LA ARAUCANIA",
+  "DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS",
+  "DE LOS LAGOS",
+  "DE COQUIMBO",
+  "DE ANTOFAGASTA",
+  "DE ÑUBLE",
+  "DE LOS RIOS",
+  "DE TARAPACA",
+  "DE ATACAMA",
+  "DE ARICA Y PARINACOTA",
+  "DE MAGALLANES Y DE LA ANTARTICA CHILENA",
+  "DE AYSEN DEL GENERAL CARLOS IBAÑEZ DEL CAMPO",
+  "Total general"
+)
+
+votos <- c(
+  2906465,
+  802976,
+  620395,
+  409512,
+  400139,
+  368873,
+  330951,
+  267015,
+  203838,
+  193860,
+  162125,
+  110354,
+  107185,
+  85884,
+  70027,
+  40677,
+  7080276
+)
+
+# Crear el data frame
+tabla_votos <- data.frame(
+  Región = regiones,
+  Votos = votos
+)
+
+# Calcular porcentaje
+tabla_votos$Porcentaje <- round(tabla_votos$Votos / max(tabla_votos$Votos) * 100, 2)
+
+# Formatear números
+tabla_votos$Votos <- number(tabla_votos$Votos, big.mark = ".", decimal.mark = ",")
+tabla_votos$Porcentaje <- paste0(tabla_votos$Porcentaje, "%")
+
+# Mostrar la tabla en formato bonito
+tabla_votos %>%
+  kable(caption = "Votos por Región", align = c('l','r','r'), format = "html") %>%
+  kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover", "condensed")) %>%
+  row_spec(nrow(tabla_votos), bold = TRUE, color = "white", background = "darkblue")
+
+
+```
+## Las 20 comunas con mayor número de votantes
+
+La siguiente tabla muestra la cantidad de votantes por comuna en las elecciones presidenciales de 2021. Se observa que Maipú, Puente Alto y Las Condes concentraron los mayores números de votantes,
+
+```{r,echo=FALSE,message=FALSE,warning=FALSE}
+# Crer el dataframe
+comunas <- c("MAIPU","PUENTE ALTO","LAS CONDES","LA FLORIDA","VIÑA DEL MAR",
+             "SANTIAGO","VALPARAISO","ANTOFAGASTA","ÑUÑOA","TEMUCO",
+             "CONCEPCION","SAN BERNARDO","PROVIDENCIA","PEÑALOLEN",
+             "RANCAGUA","TALCA","PUERTO MONTT","LA SERENA","ARICA","PUDAHUEL")
+
+votantes <- c(208248,192293,171671,161520,151025,
+              136398,131167,123689,123031,120918,
+              98990,98771,96543,95956,
+              95643,92551,88775,83825,82303,81202)
+
+com <- data.frame(Comuna = comunas, Votantes = votantes)
+
+# Mostrar la tabla con separador de miles
+com$Votantes <- format(com$Votantes, big.mark = ".")
+kable(com, caption = "Cantidad de votantes por comuna") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+                full_width = FALSE, 
+                position = "center") %>%
+  row_spec(0, bold = TRUE, color = "white", background = "darkblue") %>%  # encabezado azul
+  column_spec(2, color = "black")   
+```
+
+
+
+
+# 3. Mapa interactivo: Comportamiento por comuna
+
+Se presentan las comunas con mayor cobertura relativa(azul oscuro) como aquellas con muy baja participación.
+
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(readxl)
+library(chilemapas)
+library(dplyr)
+
+votos<- read_excel("votos2021.xlsx")
+votos$COMUNA=tolower(votos$COMUNA)
+
+# Cargar y unir mapa con nombres de comuna
+mapa <- chilemapas::mapa_comunas |> 
+  left_join(
+    chilemapas::codigos_territoriales |> 
+      select(matches("comuna")), 
+    by = "codigo_comuna"
+  ) |>
+  mutate(
+    nombre_comuna = iconv(nombre_comuna, from = "", to = "UTF-8")  # UTF-8 autodetectado
+  )
+
+mapa$nombre_comuna=tolower(mapa$nombre_comuna)
+
+
+mapa$nombre_comuna[mapa$nombre_comuna=='aisen']='AYSEN'
+mapa$nombre_comuna[mapa$nombre_comuna=='cabo de hornos']='CABO DE HORNOS(EX-NAVARINO)'
+mapa$nombre_comuna[mapa$nombre_comuna=='coihaique']='COYHAIQUE'
+mapa$nombre_comuna[mapa$nombre_comuna=='cabo de hornos']='CABO DE HORNOS(EX-NAVARINO)'
+mapa$nombre_comuna=tolower(mapa$nombre_comuna)
+
+
+mapavotos=merge(votos,mapa,by.x="COMUNA",by.y="nombre_comuna",all = F)
+names(mapavotos)[1]='nombre_comuna'
+```
+
+
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+
+# Asumimos que mapavotos1 ya está cargado como sf
+# La columna `tasa` es total/votantes2021
+mapavotos1 <- st_as_sf(mapavotos)
+
+
+# Asumimos que mapavotos1 ya está cargado como sf
+# La columna `tasa` es total/votantes2021
+
+library(sf)
+library(dplyr)
+library(leaflet)
+library(scales)
+
+# Crear etiqueta limpia para pasar el cursor
+resultado_sf <- mapavotos1 %>%
+  mutate(
+    label_info = paste0(nombre_comuna, "\n", votantes2021),
+    popup_info = paste0("<b>", nombre_comuna, "</b><br>Total: ", votantes2021)
+  )
+
+# Crear paleta de colores según total
+pal <- colorNumeric(
+  palette = "Blues",   # puedes cambiar a "YlOrRd" o cualquier otra
+  domain = resultado_sf$total
+)
+
+# Crear mapa
+mapaf <- leaflet(resultado_sf) %>%
+  addProviderTiles("CartoDB.Positron") %>%
+  addPolygons(
+    fillColor = ~pal(votantes2021),  # color según total
+    color = "black",          # borde de comuna
+    weight = 1,
+    fillOpacity = 0.7,
+    popup = ~popup_info,      # HTML al hacer click
+    label = ~label_info       # texto plano al pasar el cursor
+  ) %>%
+  addLegend(
+    pal = pal,
+    values = ~votantes2021,
+    title = "Total población",
+    position = "bottomright"
+  )%>%
+  setView(lng = -70, lat = -30, zoom = 5) %>%
+  setView(lng = -70, lat = -30, zoom = 5) 
+
+mapaf
+
+
+
+```
+
