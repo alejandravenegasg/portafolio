@@ -1,1 +1,53 @@
+/* estilos.css */
+
+body {
+  background-color: #FFF9C4; /* Amarillo suave */
+  color: #FF6F00; /* Naranja oscuro */
+  font-family: 'Arial', sans-serif;
+}
+
+header {
+  background-color: #FFEB3B; /* Amarillo brillante */
+  color: #212121; /* Gris oscuro */
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+p {
+  font-size: 1.2em;
+}
+
+nav a {
+  color: #FF6F00;
+  text-decoration: none;
+  margin: 0 15px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.proyectos {
+  padding: 20px;
+  background-color: #FFEB3B;
+}
+
+.card {
+  background-color: #FFF9C4;
+  border: 1px solid #FF6F00;
+  margin: 10px;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+footer {
+  background-color: #FF6F00;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
 
