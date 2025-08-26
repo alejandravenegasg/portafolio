@@ -3,101 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alejandra Venegas | Portafolio</title>
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f4f4f9;
-      color: #333;
-    }
-    header {
-      background: #333;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5em;
-    }
-    section {
-      padding: 40px 20px;
-      text-align: center;
-    }
-    section h2 {
-      font-size: 2em;
-      color: #333;
-    }
-    .projects {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-    .project {
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      width: 300px;
-      overflow: hidden;
-      transition: transform 0.3s ease;
-    }
-    .project:hover {
-      transform: translateY(-10px);
-    }
-    .project img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-    .project h3 {
-      margin: 15px;
-      font-size: 1.5em;
-      color: #333;
-    }
-    .project p {
-      margin: 0 15px 15px;
-      color: #666;
-    }
-    footer {
-      background: #333;
-      color: white;
-      text-align: center;
-      padding: 10px;
-      position: fixed;
-      width: 100%;
-      bottom: 0;
-    }
-  </style>
+  <title>Alejandra Venegas | Ciencia de Datos</title>
+  <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
 
-<header>
-  <h1>Alejandra Venegas</h1>
-  <p>Diseñadora Web | Desarrolladora Front-End</p>
-</header>
+  <header>
+    <h1>Alejandra Venegas</h1>
+    <p>Estadística & Ciencia de Datos | Visualizaciones y Proyectos</p>
+    <nav>
+      <a href="proyecto_migraciones.html">Globo 3D con gráfico dinámico</a>
+      <a href="proyecto_r1.html">Mapa R 1</a>
+    </nav>
+  </header>
 
-<section>
-  <h2>Sobre Mí</h2>
-  <p>Soy una apasionada del diseño web y la creación de experiencias digitales únicas. Mi objetivo es combinar estética y funcionalidad para desarrollar sitios web que no solo se vean bien, sino que también ofrezcan una experiencia de usuario excepcional.</p>
-</section>
+  <section class="intro">
+    <h2>Bienvenida a mi portafolio</h2>
+    <p>Aquí encontrarás mis análisis, gráficos interactivos y proyectos de ciencia de datos realizados con Python y R.</p>
+  </section>
 
-<section>
-  <h2>Mis Proyectos</h2>
-  <div class="projects">
-    <div class="project">
-      <img src="https://via.placeholder.com/300x200" alt="Proyecto 1">
-      <h3>Proyecto 1</h3>
-      <p>Descripción breve del proyecto, destacando las tecnologías utilizadas y el impacto logrado.</p>
+  <section class="proyectos">
+    <h2>Proyectos Destacados</h2>
+    <div class="cards">
+      <div class="card">
+        <img src="img/migraciones.png" alt="Globo 3D con gráfico dinámico">
+        <h3>Globo 3D con gráfico dinámico</h3>
+        <p>Animación en 3D de un globo terráqueo mostrando migraciones, con un gráfico dinámico sincronizado según la posición del globo. Proyecto realizado en Python.</p>
+        <a href="proyecto_migraciones.html">🎬 Ver proyecto</a>
+      </div>
+      <div class="card">
+        <img src="img/mapa_r1.png" alt="Mapa R 1">
+        <h3>Mapa R 1</h3>
+        <p>Visualización interactiva de datos estadísticos en R (2D).</p>
+        <a href="proyecto_r1.html">Ver proyecto</a>
+      </div>
     </div>
-    <div class="project">
-      <img src="https://via.placeholder.com/300x200" alt="Proyecto 2">
-      <h3>Proyecto 2</h3>
-      <p>Descripción breve del proyecto, destacando las tecnologías utilizadas y el impacto logrado.</p>
-    </div>
-    <div class="project">
-      <img src="https://via.placeholder.com/300x200" alt="Proyecto 3">
-      <h3>Proyecto 3</h3>
-      <p>Descripción breve del proyecto, destacando las tecnologías utilizadas y el impacto logrado.</
+  </section>
+
+  <footer>
+    <p>© 2025 Alejandra Venegas | <a href="mailto:alejandra@email.com">Contacto</a></p>
+  </footer>
+
+</body>
+</html>
