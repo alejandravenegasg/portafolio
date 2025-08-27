@@ -63,13 +63,14 @@ h2 {
 }
 
 /* ==================== Tarjetas de proyectos ==================== */
-.proyectos {
+.cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
   margin-top: 20px;
 }
+
 
 .card {
   background-color: #ffffff;
@@ -141,5 +142,7 @@ footer a {
 footer a:hover {
   text-decoration: underline;
 }
+
+
 
 
