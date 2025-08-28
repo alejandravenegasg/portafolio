@@ -5,7 +5,7 @@ import pandas as pd
 
 
 # Cargar los datos
-df_raw = pd.read_csv("Arritmias.csv")
+df_raw = pd.read_csv("proyectos/Arritmias.csv")
 
 cols = df_raw.columns[1:-4]
 df = df_raw.copy()

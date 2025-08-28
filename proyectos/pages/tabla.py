@@ -7,7 +7,7 @@ from dash.dash_table.Format import Group  # Correct import for Group formatting
 dash.register_page(__name__, path='/tabla')  # Nueva pestaña
 
 # Cargar datos
-df_raw = pd.read_csv("Arritmias.csv")
+df_raw = pd.read_csv("proyectos/Arritmias.csv")
 
 # Preprocesamiento de datos
 cols = df_raw.columns[1:-4]

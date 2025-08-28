@@ -8,7 +8,7 @@ import dash
 dash.register_page(__name__, path='/')
 
 # Cargar datos
-df_raw = pd.read_csv("Arritmias.csv")
+df_raw = pd.read_csv("proyectos/Arritmias.csv")
 
 # Preprocesamiento de datos
 cols = df_raw.columns[1:-4]

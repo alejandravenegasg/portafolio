@@ -8,7 +8,7 @@ from sklearn.preprocessing import StandardScaler
 dash.register_page(__name__)
 
 # Cargar datos
-df_raw = pd.read_csv("Arritmias.csv")
+df_raw = pd.read_csv("proyectos/Arritmias.csv")
 cols = df_raw.columns[1:-4]
 df = df_raw.copy()
 
